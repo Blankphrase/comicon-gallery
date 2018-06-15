@@ -105,8 +105,8 @@ Set the configuration to production mode
 
 ## Live Demo
 
-The web app can be accessed from the following link
-[World of Comicon](https://worldofcomicon.herokuapp.com/
+The web app can be accessed from the following link: 
+[World of Comicon](https://worldofcomicon.herokuapp.com/)
 
 
 ## Technology used
