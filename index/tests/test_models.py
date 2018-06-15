@@ -29,6 +29,35 @@ class LocationTestClass(TestCase):
         updated = Location.update_location("Wakanda", "Bifrost")
         self.assertTrue(updated, "Bifrost")
 
+class CategoryTestClass(TestCase):
+    '''
+    test instance,saving,deleting,updating
+    '''
+    def setUp(self):
+        self.test = Category(name="DC")
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.test, Category))
+
+    def test_saving_category(self):
+        self.test.save_category()
+        images = Category.objects.all()
+        self.assertTrue(len(images) > 0)
+
+    def test_deleting_category(self):
+        self.test.save_category()
+        self.test.delete_category()
+        locationss = Category.objects.all()
+        self.assertTrue(len(locationss) < 1)
+
+    def test_updating_category(self):
+        self.test.save_category()
+        updated = Category.update_category("DC", 'Marvel')
+        self.assertTrue(updated, 'Marvel')
+
+
+
+
 
 
 
