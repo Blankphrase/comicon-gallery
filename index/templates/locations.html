@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {{block.super}} {% block content %}
+
+<div class="container">
+    <div class="row">
+            <h1 class="page-header">Photos</h1>
+            <div class="col-lg-12 photo-div">
+                
+                    {% for photo in photos %}
+                    {% if photo.image_url %}
+    
+                    <div class="image-container">
+                            <a class="thumbnail" href="#" data-image-id="{{photo.id}}" data-toggle="modal" data-title="{{photo.image_name}}" data-caption="{{photo.description}}" data-image="{{photo.image_url}}" data-target="#{{photo.id}}">
+                                <img src="{{photo.image_url}}" alt="Image" id="img{{photo.id}}" class="img-responsive home-image" alt="{{photo.description}}">
+                            </a>
+                    </div>
+
+                <div class="modal fade" id="{{photo.id}}">
+                    <div class="modal-dialog modal-dialog-centered"style="max-width: 100px!important;" role="document">
+                      <div class="modal-content">
+                          <div class="card" style="width:400px">
+                              <img class="card-img-top" src="{{ photo.image_url }}" alt="Card image" style="width:100%">
+                              <div class="card-body">
+                                <h4 class="card-title"><small>photo name : </small>{{photo.image_name}}</h4>
+                                <p style="font-family: 'Lato', serif" class="card-text">description : {{photo.description}}</p>
+                                <button type="button" class="btn btn-secondary" onclick="copyToClipboard('img{{photo.id}}')">Copy Link</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+
+              {% endif %}
+              {% empty %}
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <h2 class="text-center">No pics yet</h2>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
