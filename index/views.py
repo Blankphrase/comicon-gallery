@@ -36,6 +36,14 @@ def search_results(request):
         return render(request, 'results.html',
                       {"message": message,"locations":locations,"categories":categories})
 
+def get_image_by_location(request,loc):
+    '''
+    Handles search requests by location
+    renders the results with the following params: found photos, locations, categories
+    '''
+    photos=Image.filter_location(loc)
+    return render(request, 'locations.html', {"photos": photos,"locations":locations,"categories":categories})
+
 
 
 
