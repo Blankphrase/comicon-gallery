@@ -56,6 +56,57 @@ class CategoryTestClass(TestCase):
         self.assertTrue(updated, 'Marvel')
 
 
+class ImageTestClass(TestCase):
+    def setUp(self):
+
+        self.test_location = Location(location="Bifrost")
+        self.test_location.save()
+        # Category
+        self.test_category = Category(name="Marvel")
+        self.test_category.save()
+        # Image
+
+    def test_instance(self):
+        self.test_image = Image(image="testImage",
+                                image_url="testImageurl",
+                                image_name="Test",
+                                description="This is a test",
+                                location=self.test_location)
+        self.test_image.save()
+        self.test_image.category.add(self.test_category)
+        self.assertTrue(isinstance(self.test_image, Image))
+
+    def test_saving_image(self):
+        images0 = Image.objects.all()
+        len1=len(images0)
+
+        self.test_image = Image(image="testImage",
+                                image_url="testImageurl",
+                                image_name="Test",
+                                description="This is a test",
+                                location=self.test_location)
+        self.test_image.save()
+        self.test_image.category.add(self.test_category)
+   
+        images1 = Image.objects.all()
+        len2=len(images1)
+
+        self.assertTrue(len2 > len1)
+
+    def test_deleting_image(self):
+        self.test_image = Image(image="testImage",
+                                image_url="testImageurl",
+                                image_name="Test",
+                                description="This is a test",
+                                location=self.test_location)
+        self.test_image.save()
+        self.test_image.category.add(self.test_category)
+        images0 = Image.objects.all()
+        len1=len(images0)
+        self.test_image.delete_image()
+        images1 = Image.objects.all()
+        len2=len(images1)
+        self.assertTrue(len1 > len2)
 
 
 
