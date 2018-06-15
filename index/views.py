@@ -44,7 +44,13 @@ def get_image_by_location(request,loc):
     photos=Image.filter_location(loc)
     return render(request, 'locations.html', {"photos": photos,"locations":locations,"categories":categories})
 
-
+def get_image_by_category(request,cat):
+    '''
+    Handles search requests by category
+    renders the results with the following params: found photos, locations, categories
+    '''
+    photos=Image.filter_category(cat)
+    return render(request, 'category.html', {"photos": photos,"locations":locations,"categories":categories})
 
 
 
