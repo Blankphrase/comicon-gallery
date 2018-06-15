@@ -31,6 +31,31 @@ class Location(models.Model):
         return self.location
 
 
+class Category(models.Model):
+    '''
+    Image category model
+    '''
+    CATEGORIES=(
+        ("DC","DC"),
+        ("Marvel","Marvel")
+        )
+    name = models.CharField(max_length=120, choices =CATEGORIES)
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    @classmethod
+    def update_category(cls,cat, update):
+        updated = cls.objects.filter(name=cat).update(name=update)
+        return updated
+
+    def __str__(self):
+        return self.name
+
+
 
 
 
