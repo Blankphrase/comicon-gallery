@@ -78,8 +78,8 @@ class Image(models.Model):
         self.delete()
 
     @classmethod
-    def update_image(cls, id, target, update):
-        updated = cls.objects.filter(id=id).update(target=update)
+    def update_image(cls, id, update):
+        updated = cls.objects.filter(id=id).update(image=update)
         return updated
 
     @classmethod
