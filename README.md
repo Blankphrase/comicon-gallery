@@ -55,7 +55,7 @@ This project was created on a debian linux platform but should work on other uni
 
 ### Cloning the repository
 ```bash
-git clone https://github.com/jakhax/pitches.git && cd pitches
+git clone https://github.com/jakhax/comicon-gallery.git && cd comicon-gallery
 ```
 
 ### Creating a virtual environment
